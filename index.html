@@ -154,15 +154,17 @@
     </p>
     </p>
 </div>
-  <input type="text" id="searchInput" placeholder="🔍 Spieleseite suchen..." style="margin: 20px auto; display: block; padding: 10px; width: 80%; max-width: 400px; border-radius: 8px; border: none; font-size: 16px;">
+ <div style="text-align: center; margin: 20px;">
+  <input type="text" id="searchInput" placeholder="🔍 Spieleseite suchen..." style="width: 80%; max-width: 400px; padding: 10px; font-size: 16px; border-radius: 8px; border: none;">
 </div>
   <header>
     Über 100 kostenlose Spieleseiten
   </header>
   
-  <div id="spielebereich">
+
   <div class="grid">
     <div class="card">
+        <div id="spielebereich">
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAaVBMVEXnTDn////lNRjzta/nSjb99PPmPyjujILnSDTpX1D52dboW0vmQi3mRTDnTjvmPCT64+H0urX2x8PqaVzoVEPvk4rqcGP40s/xopvsdmrxp6DkIAD76Of++fjthnzyrqjsfnPkLgrvmZDlIYREAAADkElEQVR4nO2c67aaMBBGEw0RJRERvMPx8v4PWbVWRcFMqC2Ttb79Vx3c52SSATMRAgAAAAAAAAAAAAAAAAAAAAAAAAAAAABAf6h04EHsG946Q+ovuhTrbEgmG1u/8Gbsip79fM8mHk+kB6X1+t/EeuYMmQ36kvG7tNKZO+KwPxk58rh2uoh4y0RL8hjXy5IQsE8ZuRLEtLHJnBKvVxlq2ii7JoXrVyZakC6vN7Rw/crI2dK4A9uEkPwMZOS8cKaNMitisL5l5NZZCAxoCcNBpjo4BlpKTBgOMrKcfhxoJnGXMXxk5Go3bQ+qUtIKw0ZGro/tNsdtFZZMlLeWNemBUsZwkpGlaJnSrF9IFjJybhongVgQ6n52MtG6cX42J78wPGRk2bTa2CWxjGEmI1fJW9ooS19heMnIvVX1cNOdX8JwkpGvA20w8g7BR0bWFxtTeCYML5ly9xxM+6yW/GTkNr3HIj1ZYi0jf+42mvJkibdMmd8mAbPxnZX5ycj573sbW1BvlDnLVNvLlKbsttvHvyrTaWzUiC5pY+g3yv9MRojkzrRTAp+ZjI0YeNyP/TsZdScddZSRmdh1Hq1flXmgO8vIkWfdz1qm8wc5yvwFkIEMZCADGchABjKQgQxkIAMZyEAGMpCBDGQgAxnIQAYy35bx/q3P/efpT8b7F2X3Xu3+ZGKPPb4X5pqxTBF7bfWZ5SljmYTaSHIlGmnDWSb22U861DFvGY+dvnMTM5cRJiduUJnlRnCXEcSNHNWlm4u9jDJ7yto5PIoAZGg7yyY6DkJG6Nxd9yTX/YEByJzTxvXG287NEGTE0VHW7G/76oOQme4+ljWrIiQZEScfZrRo82cjehgywixa31Sd7pvqA5H5UNZkj770QGTaW8tm40frRigywvw0TgLV4alzIxgZpRvLmlP6FDIYGaHShoG2eu5BCUhGWPE20KqaS0gyIj28DrS83lIXksx0t6+//tq6GZLMuUirpc389eSTsGTs+CltJvlrF2pYMsI87gai0VtHbWAyyt7TZqjV66uByZzr59tN9KShCz00GZFurmlTFg1t28HJiMHpvNpUjcdrhScjLs2mWeMJIT3KLJzPw8aNMraYzZq/EkHmiyfP1b7Tcu86wK94m6+upD9584EayjrPGfzimYD1S7tp+aRtP+/IFdH7AEgqXV3+b0gAAAAAAAAAAAAAAAAAAAAAAAAAAE78AlXKUjhJYza5AAAAAElFTkSuQmCC" alt="Miniclip Logo">
         <div>Miniclip</div>
         <a href="https://www.miniclip.com" target="_blank">Besuchen</a>
@@ -819,16 +821,17 @@
 
 
 
-document.getElementById("searchInput").addEventListener("input", function () {
-  const filter = this.value.toLowerCase();
-  const container = document.getElementById("spielebereich");
-  const boxes = container.children;
 
-  for (let box of boxes) {
-    const text = box.textContent.toLowerCase();
-    box.style.display = text.includes(filter) ? "inline-block" : "none";
-  }
-});
+  document.getElementById("searchInput").addEventListener("input", function () {
+    const filter = this.value.toLowerCase();
+    const container = document.getElementById("spielebereich");
+    const boxes = container.children;
+
+    for (let box of boxes) {
+      const text = box.textContent.toLowerCase();
+      box.style.display = text.includes(filter) ? "inline-block" : "none";
+    }
+  });
 
 
 </script>
