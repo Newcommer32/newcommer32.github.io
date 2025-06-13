@@ -154,11 +154,10 @@
     </p>
     </p>
 </div>
- <div style="text-align: center; margin: 20px;">
-  <input type="text" id="searchInput" placeholder="🔍 Spieleseite suchen..." style="width: 80%; max-width: 400px; padding: 10px; font-size: 16px; border-radius: 8px; border: none;">
 </div>
   <header>
     Über 100 kostenlose Spieleseiten
+    <h2>Die besten Kostenlosen spielewebsiten für Lange weile in 2025</h2>
   </header>
   
 
@@ -818,20 +817,6 @@
     }
   };
 
-
-
-
-
-  document.getElementById("searchInput").addEventListener("input", function () {
-    const filter = this.value.toLowerCase();
-    const container = document.getElementById("spielebereich");
-    const boxes = container.children;
-
-    for (let box of boxes) {
-      const text = box.textContent.toLowerCase();
-      box.style.display = text.includes(filter) ? "inline-block" : "none";
-    }
-  });
 
 
 </script>
