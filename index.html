@@ -142,6 +142,8 @@
   #cookie-banner .reject:hover {
     background-color: #c82333;
   }
+  .search { text-align: center; margin: 1rem; }
+    .search input { padding: 0.5rem; width: 80%; border-radius: 8px; border: none; }
 </style>
 <body>
   <div id="cookie-banner">
@@ -154,6 +156,9 @@
     </p>
     </p>
 </div>
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Suche nach Spieleseite...">
+  </div>
   <header>
     Über 100 kostenlose Spieleseiten
   </header>
@@ -810,5 +815,36 @@
       document.getElementById('cookie-banner').style.display = 'none';
     }
   };
+
+
+  
+  function renderCards(filter = "") {
+      const cats = { allgemein: [], klassiker: [], rennen: [] };
+      cards.forEach(c => {
+        if (c.name.toLowerCase().includes(filter)) {
+          if (!cats[c.category]) cats[c.category] = [];
+          cats[c.category].push(c);
+        }
+      });
+
+      Object.keys(cats).forEach(cat => {
+        const grid = document.getElementById(cat + "-grid");
+        if (grid) {
+          grid.innerHTML = cats[cat].map(card => `
+            <div class="card">
+              <img src="${card.img}" alt="${card.name}" loading="lazy">
+              <div>${card.name}</div>
+              <a href="${card.url}" target="_blank">Besuchen</a>
+            </div>
+          `).join("\n");
+        }
+      });
+    }
+
+    document.getElementById("searchInput").addEventListener("input", e => {
+      renderCards(e.target.value.toLowerCase());
+    });
+
+    renderCards();
 </script>
 </body>
