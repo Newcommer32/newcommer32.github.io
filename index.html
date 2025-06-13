@@ -79,29 +79,46 @@
 <!-- Google AdSense Auto Ads -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9069036904473405"
      crossorigin="anonymous"></script>
-  <style>
+<style>
   #cookie-banner {
     position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #f4f4f4;
-    padding: 10px;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-    text-align: center;
-    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     z-index: 9999;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    font-family: sans-serif;
+  }
+  #cookie-banner h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  #cookie-banner p {
+    font-size: 0.95em;
+    margin-bottom: 15px;
   }
   #cookie-banner button {
-    margin-left: 10px;
-    padding: 5px 10px;
+    margin: 5px;
+    padding: 10px 16px;
     border: none;
-    background-color: #007acc;
-    color: white;
+    border-radius: 6px;
     cursor: pointer;
-    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
   }
-  #cookie-banner button.reject {
-    background-color: #666;
+  #cookie-banner .accept {
+    background-color: #28a745;
+    color: white;
+  }
+  #cookie-banner .reject {
+    background-color: #dc3545;
+    color: white;
   }
 </style>
 <body>
