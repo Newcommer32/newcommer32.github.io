@@ -65,18 +65,51 @@
 </head>
   <link rel="icon" type="image/png" href="file_00000000783c624682fb2ccd6c660505.png">
   <!-- Google tag (gtag.js) -->
+<!-- Google Analytics (wird nur bei Zustimmung aktiviert) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CGC0B1YLY2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CGC0B1YLY2');
+  function enableTracking() {
+    gtag('js', new Date());
+    gtag('config', 'G-CGC0B1YLY2');
+  }
+</script>
 </script>
 <!-- Google AdSense Auto Ads -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9069036904473405"
      crossorigin="anonymous"></script>
+  <style>
+  #cookie-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #f4f4f4;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    font-size: 14px;
+    z-index: 9999;
+  }
+  #cookie-banner button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007acc;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  #cookie-banner button.reject {
+    background-color: #666;
+  }
+</style>
 <body>
+  <div id="cookie-banner">
+  Diese Website verwendet Cookies, um Dienste wie Google Analytics & Werbung zu ermöglichen. Möchtest du zustimmen?
+  <button onclick="acceptCookies()">Zustimmen</button>
+  <button class="reject" onclick="rejectCookies()">Ablehnen</button>
+</div>
   <header>
     Über 100 kostenlose Spieleseiten
   </header>
@@ -714,4 +747,24 @@
       </div>
     © 2025 – Spieleseiten Übersicht. Alle Links führen zu externen Angeboten.
   </footer>
+<script>
+  function acceptCookies() {
+    localStorage.setItem('cookiesAccepted', 'true');
+    enableTracking();
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  function rejectCookies() {
+    localStorage.setItem('cookiesAccepted', 'false');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  window.onload = function() {
+    const consent = localStorage.getItem('cookiesAccepted');
+    if (consent === 'true') {
+      enableTracking();
+      document.getElementById('cookie-banner').style.display = 'none';
+    } else if (consent === 'false') {
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+  };
+</script>
 </body>
