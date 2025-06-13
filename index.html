@@ -817,34 +817,20 @@
   };
 
 
-  
-  function renderCards(filter = "") {
-      const cats = { allgemein: [], klassiker: [], rennen: [] };
-      cards.forEach(c => {
-        if (c.name.toLowerCase().includes(filter)) {
-          if (!cats[c.category]) cats[c.category] = [];
-          cats[c.category].push(c);
-        }
-      });
 
-      Object.keys(cats).forEach(cat => {
-        const grid = document.getElementById(cat + "-grid");
-        if (grid) {
-          grid.innerHTML = cats[cat].map(card => `
-            <div class="card">
-              <img src="${card.img}" alt="${card.name}" loading="lazy">
-              <div>${card.name}</div>
-              <a href="${card.url}" target="_blank">Besuchen</a>
-            </div>
-          `).join("\n");
-        }
-      });
-    }
+  document.getElementById("searchInput").addEventListener("keyup", function() {
+    const filter = this.value.toLowerCase();
+    const boxes = document.querySelectorAll("a");
 
-    document.getElementById("searchInput").addEventListener("input", e => {
-      renderCards(e.target.value.toLowerCase());
+    boxes.forEach(function(box) {
+      const text = box.textContent.toLowerCase();
+      if (text.includes(filter)) {
+        box.style.display = "";
+      } else {
+        box.style.display = "none";
+      }
     });
+  });
 
-    renderCards();
 </script>
 </body>
