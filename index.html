@@ -11,14 +11,8 @@
   <!-- Google tag (gtag.js) -->
 <!-- Google Analytics (wird nur bei Zustimmung aktiviert) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CGC0B1YLY2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  function enableTracking() {
-    gtag('js', new Date());
-    gtag('config', 'G-CGC0B1YLY2');
-  }
-</script>
+
+
 </script>
 <!-- Google AdSense Auto Ads -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9069036904473405"
@@ -29,77 +23,9 @@
     to   { opacity: 1; transform: translate(-50%, -50%); }
   }
 
-  #cookie-banner {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 24px 20px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    z-index: 9999;
-    width: 90%;
-    max-width: 340px;
-    text-align: center;
-    font-family: 'Segoe UI', sans-serif;
-    animation: fadeIn 0.6s ease-out;
-  }
-
-  #cookie-banner h2 {
-    font-size: 1.5em;
-    margin-bottom: 12px;
-    color: #000;
-  }
-
-  #cookie-banner p {
-    font-size: 1em;
-    color: #000;
-    margin-bottom: 18px;
-  }
-
-  #cookie-banner button {
-    margin: 6px 8px;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.95em;
-    transition: background-color 0.3s ease;
-  }
-
-  #cookie-banner .accept {
-    background-color: #28a745;
-    color: white;
-  }
-
-  #cookie-banner .accept:hover {
-    background-color: #218838;
-  }
-
-  #cookie-banner .reject {
-    background-color: #dc3545;
-    color: white;
-  }
-
-  #cookie-banner .reject:hover {
-    background-color: #c82333;
-  }
-</style>
-
+ 
 <body class="bg-gray-100 font-sans">
- <div id="cookie-banner">
-    <h2>Cookies 🍪</h2> 
-    <p>
-  Diese Website verwendet Cookies, um Dienste wie Google Analytics & Werbung zu ermöglichen. Möchtest du zustimmen?
-  <p>
-  <button onclick="acceptCookies()">Zustimmen</button>
-  <button class="reject" onclick="rejectCookies()">Ablehnen</button>
-    </p>
-    </p>
-</div>
-</div>
+ 
 <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-6 shadow-lg">
 <div class="container mx-auto px-4">
 <div class="flex flex-col md:flex-row justify-between items-center">
@@ -720,25 +646,7 @@
 <footer class="bg-gray-800 text-white py-8 mt-12 text-center">
 <p>© 2025 GameZone. Alle Rechte vorbehalten.</p>
 </footer>
-<script>
-  function acceptCookies() {
-    localStorage.setItem('cookiesAccepted', 'true');
-    enableTracking();
-    document.getElementById('cookie-banner').style.display = 'none';
-  }
-  function rejectCookies() {
-    localStorage.setItem('cookiesAccepted', 'false');
-    document.getElementById('cookie-banner').style.display = 'none';
-  }
-  window.onload = function() {
-    const consent = localStorage.getItem('cookiesAccepted');
-    if (consent === 'true') {
-      enableTracking();
-      document.getElementById('cookie-banner').style.display = 'none';
-    } else if (consent === 'false') {
-      document.getElementById('cookie-banner').style.display = 'none';
-    }
-  };
+
 
 </body>
 </html>
