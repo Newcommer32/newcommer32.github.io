@@ -24,12 +24,17 @@
   }
 </style>
  
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-100 font-sans"  class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
+
  
 <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-6 shadow-lg">
 <div class="container mx-auto px-4">
 <div class="flex flex-col md:flex-row justify-between items-center">
 <h1 class="text-3xl font-bold">GameZone – 120 Spieleseiten</h1>
+  <button id="darkModeToggle" class="ml-auto px-4 py-2 rounded bg-gray-800 text-white hover:bg-gray-700">
+  🌙 Dark Mode
+</button>
+
 </div>
 </div>
 </header>
@@ -647,6 +652,37 @@
 <p>© 2025 GameZone. Alle Rechte vorbehalten.</p>
 </footer>
 
+<script>
 
+
+  const toggle = document.getElementById('darkModeToggle');
+  const root = document.documentElement;
+
+  // Zustand aus localStorage laden
+  if (localStorage.getItem('theme') === 'dark') {
+    root.classList.add('dark');
+  }
+
+  toggle.addEventListener('click', () => {
+    if (root.classList.contains('dark')) {
+      root.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+
+
+
+  
+  // tailwind.config.js
+module.exports = {
+  darkMode: 'class', // wichtig!
+  // ...
+}
+
+</script>
 </body>
 </html>
