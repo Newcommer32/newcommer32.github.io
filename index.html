@@ -24,15 +24,26 @@
   }
 
 
-  a[href] {
-    color: black; /* Tailwind: text-blue-600 */
-    border-radius: 5px;
-    Border-color: blue;
-  }
-  a[href]:hover {
-    color: #1e40af; /* Tailwind: text-blue-800 */
+
+  a[href^="http"] {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background-color: #2563eb; /* Tailwind: blue-600 */
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
     text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
+
+  a[href^="http"]:hover {
+    background-color: #1d4ed8; /* Tailwind: blue-700 */
+    transform: translateY(-2px);
+  }
+
 
 
 
