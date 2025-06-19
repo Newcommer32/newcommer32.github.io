@@ -1149,55 +1149,75 @@ document.addEventListener("DOMContentLoaded", () => {
     // Hole gespeicherte Werte oder setze neu
     const votes = JSON.parse(localStorage.getItem("votes_" + id)) || { likes: 0, dislikes: 0, voted: false, choice: null };
 
+    // Anzeige updaten
     likeBtn.querySelector("span").textContent = votes.likes;
     dislikeBtn.querySelector("span").textContent = votes.dislikes;
 
-    // Funktion zum Sperren der Buttons nach dem Vote
-    function disableButtons() {
-      likeBtn.disabled = true;
-      dislikeBtn.disabled = true;
-      likeBtn.style.cursor = "not-allowed";
-      dislikeBtn.style.cursor = "not-allowed";
-    }
-
-    // Wenn schon gevotet, Buttons sperren
-    if (votes.voted) {
-      disableButtons();
-      // Optional: Zeige an, was der Nutzer gewählt hat
+    // Visuelle Hervorhebung setzen
+    function updateHighlight() {
       if (votes.choice === "like") {
         likeBtn.style.fontWeight = "bold";
+        dislikeBtn.style.fontWeight = "normal";
       } else if (votes.choice === "dislike") {
         dislikeBtn.style.fontWeight = "bold";
+        likeBtn.style.fontWeight = "normal";
+      } else {
+        likeBtn.style.fontWeight = "normal";
+        dislikeBtn.style.fontWeight = "normal";
       }
     }
+    updateHighlight();
 
     likeBtn.addEventListener("click", () => {
-      if (votes.voted) return; // Kein mehrfaches voten
-
-      votes.likes++;
-      votes.voted = true;
-      votes.choice = "like";
+      if (votes.choice === "like") {
+        // Like wegnehmen
+        votes.likes--;
+        votes.voted = false;
+        votes.choice = null;
+      } else if (votes.choice === "dislike") {
+        // Wechsel von Dislike zu Like
+        votes.dislikes--;
+        votes.likes++;
+        votes.choice = "like";
+      } else {
+        // Erstmaliges Like
+        votes.likes++;
+        votes.voted = true;
+        votes.choice = "like";
+      }
+      // Speichern und Anzeigen aktualisieren
       localStorage.setItem("votes_" + id, JSON.stringify(votes));
-
       likeBtn.querySelector("span").textContent = votes.likes;
-      disableButtons();
-      likeBtn.style.fontWeight = "bold";
+      dislikeBtn.querySelector("span").textContent = votes.dislikes;
+      updateHighlight();
     });
 
     dislikeBtn.addEventListener("click", () => {
-      if (votes.voted) return; // Kein mehrfaches voten
-
-      votes.dislikes++;
-      votes.voted = true;
-      votes.choice = "dislike";
+      if (votes.choice === "dislike") {
+        // Dislike wegnehmen
+        votes.dislikes--;
+        votes.voted = false;
+        votes.choice = null;
+      } else if (votes.choice === "like") {
+        // Wechsel von Like zu Dislike
+        votes.likes--;
+        votes.dislikes++;
+        votes.choice = "dislike";
+      } else {
+        // Erstmaliges Dislike
+        votes.dislikes++;
+        votes.voted = true;
+        votes.choice = "dislike";
+      }
+      // Speichern und Anzeigen aktualisieren
       localStorage.setItem("votes_" + id, JSON.stringify(votes));
-
+      likeBtn.querySelector("span").textContent = votes.likes;
       dislikeBtn.querySelector("span").textContent = votes.dislikes;
-      disableButtons();
-      dislikeBtn.style.fontWeight = "bold";
+      updateHighlight();
     });
   });
 });
+
 </script>
 </body>
 </html>
