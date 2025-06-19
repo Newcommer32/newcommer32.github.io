@@ -18,6 +18,11 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9069036904473405"
      crossorigin="anonymous"></script>
 <style>
+  
+  body {
+  background-color: transparent !important;
+}
+
  html, body {
       margin: 0;
       padding: 0;
@@ -25,9 +30,9 @@
       transition: all 0.3s ease;
     }
 
-    body.invert-mode {
-      filter: invert(1) hue-rotate(180deg);
-    }
+ html.invert-mode {
+  filter: invert(1) hue-rotate(180deg);
+}
 
     .darkmode-button {
       position: fixed;
@@ -1243,7 +1248,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
  function toggleDarkMode() {
-      document.body.classList.toggle('invert-mode');
+      document.documentElement.classList.toggle('invert-mode');
+
     }
 </script>
 </body>
