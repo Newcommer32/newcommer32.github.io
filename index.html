@@ -1137,7 +1137,7 @@
       </div>
     © 2025 – Spieleseiten Übersicht. Alle Links führen zu externen Angeboten.
   </footer>
-<script>
+  <script>
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".vote-buttons").forEach((voteBox, index) => {
     const id = "spiel" + String(index + 1).padStart(3, "0");
@@ -1146,24 +1146,59 @@ document.addEventListener("DOMContentLoaded", () => {
     const likeBtn = voteBox.querySelector(".like");
     const dislikeBtn = voteBox.querySelector(".dislike");
 
-    const votes = JSON.parse(localStorage.getItem("votes_" + id)) || { likes: 0, dislikes: 0 };
+    // Hole gespeicherte Werte oder setze neu
+    const votes = JSON.parse(localStorage.getItem("votes_" + id)) || { likes: 0, dislikes: 0, voted: false, choice: null };
+
     likeBtn.querySelector("span").textContent = votes.likes;
     dislikeBtn.querySelector("span").textContent = votes.dislikes;
 
+    // Funktion zum Sperren der Buttons nach dem Vote
+    function disableButtons() {
+      likeBtn.disabled = true;
+      dislikeBtn.disabled = true;
+      likeBtn.style.cursor = "not-allowed";
+      dislikeBtn.style.cursor = "not-allowed";
+    }
+
+    // Wenn schon gevotet, Buttons sperren
+    if (votes.voted) {
+      disableButtons();
+      // Optional: Zeige an, was der Nutzer gewählt hat
+      if (votes.choice === "like") {
+        likeBtn.style.fontWeight = "bold";
+      } else if (votes.choice === "dislike") {
+        dislikeBtn.style.fontWeight = "bold";
+      }
+    }
+
     likeBtn.addEventListener("click", () => {
+      if (votes.voted) return; // Kein mehrfaches voten
+
       votes.likes++;
-      likeBtn.querySelector("span").textContent = votes.likes;
+      votes.voted = true;
+      votes.choice = "like";
       localStorage.setItem("votes_" + id, JSON.stringify(votes));
+
+      likeBtn.querySelector("span").textContent = votes.likes;
+      disableButtons();
+      likeBtn.style.fontWeight = "bold";
     });
 
     dislikeBtn.addEventListener("click", () => {
+      if (votes.voted) return; // Kein mehrfaches voten
+
       votes.dislikes++;
-      dislikeBtn.querySelector("span").textContent = votes.dislikes;
+      votes.voted = true;
+      votes.choice = "dislike";
       localStorage.setItem("votes_" + id, JSON.stringify(votes));
+
+      dislikeBtn.querySelector("span").textContent = votes.dislikes;
+      disableButtons();
+      dislikeBtn.style.fontWeight = "bold";
     });
   });
 });
-  </script>
+</script>
 </body>
 </html>
 
