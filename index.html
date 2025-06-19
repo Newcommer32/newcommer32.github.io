@@ -1247,9 +1247,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function toggleDarkMode() {
-  document.documentElement.classList.toggle('invert-mode');
-}
+    function toggleDarkMode() {
+      document.body.style.backgroundColor = '#121212'; // dunkles Grau, fast schwarz
+      document.body.style.color = 'white'; // Textfarbe anpassen
+    }
 
 </script>
 </body>
