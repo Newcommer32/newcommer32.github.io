@@ -18,18 +18,14 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9069036904473405"
      crossorigin="anonymous"></script>
 <style>
-body {
-  background-color: white;
-  color: black;
-  transition: all 0.3s ease;
-}
+ html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      transition: all 0.3s ease;
+    }
 
-.darkmode {
-  background-color: black;
-  color: white;
-}
-
-    .invert-mode {
+    body.invert-mode {
       filter: invert(1) hue-rotate(180deg);
     }
 
@@ -1246,10 +1242,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-    function toggleDarkMode() {
-  document.body.classList.toggle('darkmode');
-}
-
+ function toggleDarkMode() {
+      document.body.classList.toggle('invert-mode');
+    }
 </script>
 </body>
 </html>
