@@ -18,6 +18,27 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9069036904473405"
      crossorigin="anonymous"></script>
 <style>
+
+   body {
+      transition: all 0.3s ease;
+    }
+
+    .invert-mode {
+      filter: invert(1) hue-rotate(180deg);
+    }
+
+    .darkmode-button {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px 15px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 9999;
+    }
   @keyframes fadeIn {
     from { opacity: 0; transform: translate(-50%, -60%); }
     to   { opacity: 1; transform: translate(-50%, -50%); }
@@ -55,6 +76,7 @@
 <div class="container mx-auto px-4">
 <div class="flex flex-col md:flex-row justify-between items-center">
 <h1 class="text-3xl font-bold">GameZone – 120 Spieleseiten</h1>
+   <button class="darkmode-button" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 </div>
 </div>
 </header>
@@ -1218,6 +1240,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+     function toggleDarkMode() {
+      document.body.classList.toggle('invert-mode');
+    }
 </script>
 </body>
 </html>
