@@ -49,13 +49,15 @@
 
 </style>
 
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
 
 <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-6 shadow-lg">
 <div class="container mx-auto px-4">
 <div class="flex flex-col md:flex-row justify-between items-center">
 <h1 class="text-3xl font-bold">GameZone – 120 Spieleseiten</h1>
- 
+ <button id="darkModeToggle" class="mt-4 md:mt-0 bg-white text-black dark:bg-gray-800 dark:text-white px-4 py-2 rounded shadow hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+  🌙 Dark Mode
+</button>
 </div>
 </div>
 </header>
@@ -1218,6 +1220,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+     const toggle = document.getElementById('darkModeToggle');
+  const root = document.documentElement;
+
+  // Lade Zustand aus localStorage
+  if (localStorage.getItem('theme') === 'dark') {
+    root.classList.add('dark');
+  }
+
+  toggle.addEventListener('click', () => {
+    root.classList.toggle('dark');
+    if (root.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  });
 
 
 </script>
