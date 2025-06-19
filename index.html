@@ -83,7 +83,7 @@ html, body {
 <div class="container mx-auto px-4">
 <div class="flex flex-col md:flex-row justify-between items-center">
 <h1 class="text-3xl font-bold">GameZone – 120 Spieleseiten</h1>
-   <button class="darkmode-button" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+   <button class="darkmode-button" onclick="toggeDarkMode()">🌙 Dark Mode</button>
 </div>
 </div>
 </header>
@@ -1247,7 +1247,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-    function toggleDarkMode() {
+    function toggeDarkMode() {
       document.body.style.backgroundColor = '#121212'; // dunkles Grau, fast schwarz
       document.body.style.color = 'white'; // Textfarbe anpassen
     }
