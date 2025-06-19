@@ -23,6 +23,13 @@
     to   { opacity: 1; transform: translate(-50%, -50%); }
   }
 
+
+  @layer utilities {
+    a[href] {
+      @apply text-blue-600 hover:text-blue-800 underline hover:no-underline transition duration-200;
+    }
+  }
+
 </style>
 
 <body class="bg-gray-100 font-sans">
