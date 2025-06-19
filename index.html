@@ -24,11 +24,17 @@
   }
 
 
-  @layer utilities {
-    a[href] {
-      @apply text-blue-600 hover:text-blue-800 underline hover:no-underline transition duration-200;
-    }
+  a[href] {
+    color: #2563eb; /* Tailwind: text-blue-600 */
+    text-decoration: underline;
+    transition: all 0.2s ease;
   }
+  a[href]:hover {
+    color: #1e40af; /* Tailwind: text-blue-800 */
+    text-decoration: none;
+  }
+
+
 
 </style>
 
