@@ -59,6 +59,12 @@
 </div>
 </header>
 <main class="container mx-auto px-4 py-8">
+<div class="mb-6">
+  <input type="text" id="spielSuche" placeholder="🔍 Spiel suchen..." 
+         class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300"
+         oninput="spieleFiltern()">
+</div>
+
 
   <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-black border-b-2 border-blue-500 pb-2">
     🏆 Top 5 Spiele diesen Monat
@@ -1222,6 +1228,19 @@ document.addEventListener("DOMContentLoaded", () => {
  
 
 </script>
+
+<script>
+function spieleFiltern() {
+  const input = document.getElementById("spielSuche").value.toLowerCase();
+  const karten = document.querySelectorAll("main .grid > div");
+  karten.forEach(karte => {
+    const titel = karte.querySelector("h3, .p-4 > div");
+    const text = titel ? titel.innerText.toLowerCase() : "";
+    karte.style.display = text.includes(input) ? "" : "none";
+  });
+}
+</script>
+
 </body>
 </html>
 
