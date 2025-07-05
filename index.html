@@ -1244,11 +1244,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
- 
 
-</script>
-
-<script>
 function spieleFiltern() {
   const input = document.getElementById("spielSuche").value.toLowerCase();
   const karten = document.querySelectorAll("main .grid > div");
@@ -1258,6 +1254,15 @@ function spieleFiltern() {
     karte.style.display = text.includes(input) ? "" : "none";
   });
 }
+
+  document.querySelectorAll('div.shadow-md.flex').forEach(card => {
+    const text = card.innerText.trim();
+    if (text === '') {
+      card.remove(); // Wenn komplett leer
+    }
+  });
+
+
 </script>
 
 </body>
